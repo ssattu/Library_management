@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  book: one
+  user: one
+  period_of_days: MyString
+  issue_date: 2022-02-03 16:36:07
+
+two:
+  book: two
+  user: two
+  period_of_days: MyString
+  issue_date: 2022-02-03 16:36:07

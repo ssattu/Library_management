@@ -1,0 +1,21 @@
+<div class="container responsive">
+		<h1 class="d-flex justify-content-center align-content-center ">Books</h1><br>
+		
+		  <div class="row row-cols-5">
+					<% @books.each do |book|%>
+		    	<div class="col">
+						<div class="card " style="width: 16rem;">
+						  <a href="book"> <%= image_tag book.image.url if book.image_url.present? %></a>
+						  	<div class="card-body">
+						    <h5 class="card-title"><b>Name: </b><%= book.name %></h5>
+						    <p class="card-text"><b>Genre: </b><%= book.genre %></p>
+						    <p class="card-text"><b>Price: </b><%= book.price %></p>
+						    <p class="card-text"><%= book.description %></p>
+					  	</div>
+						</div><br>
+					</div>
+					<% end %>
+	 		 </div>
+</div>
+
+
