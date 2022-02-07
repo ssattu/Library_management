@@ -4,18 +4,51 @@
 		  <div class="row row-cols-5">
 					<% @books.each do |book|%>
 		    	<div class="col">
-						<div class="card " style="width: 16rem;">
-						  <a href="book"> <%= image_tag book.image.url if book.image_url.present? %></a>
+						<div class="card ", style="width: 16rem;">
+						  <a href="/issue_books/new" class="d-flex justify-content-center mt-2"> <%= image_tag book.image.url, style: 'height: auto; width: 15rem' if book.image_url.present? %></a>
 						  	<div class="card-body">
 						    <h5 class="card-title"><b>Name: </b><%= book.name %></h5>
+						    <p class="card-text"><b>Book Id: </b><%= book.id %></p>
 						    <p class="card-text"><b>Genre: </b><%= book.genre %></p>
-						    <p class="card-text"><b>Price: </b><%= book.price %></p>
+						    <p class="card-text"><b>Price: </b><%= price(book) %></p>
 						    <p class="card-text"><%= book.description %></p>
+
+							  <% if user_signed_in? && 	current_user.is_admin? %>
+									<p class="card-text">
+										<div class=" d-flex justify-content-between">
+											<%= button_to 'Edit',  edit_book_path(book),class:"btn-outline-dark rounded", method: :get %>
+											<%= button_to 'Destroy',  book_path(book), method: :delete, class:'delete-btn btn-outline-dark rounded' %>
+											<%= button_to 'Show',  book_path(book), method: :get, class:"btn-outline-dark rounded"%>
+										</div>
+									</p>
+								<% end %>
+
 					  	</div>
 						</div><br>
 					</div>
 					<% end %>
 	 		 </div>
 </div>
+
+<script>
+	
+	  var deleteButton = document.querySelectorAll(".delete-btn");
+	  for (var i = 0; i < deleteButton.length; i++){
+		  	deleteButton[i].addEventListener("click", deleteConfirmation);
+	  	}
+	  		function deleteConfirmation(e) {
+		    	console.log('FUNC');
+		    	if (confirm("Are you sure?")) {
+		    	console.log('Delete');
+		    	}
+		    	else {
+		    	console.log('DONT DELETE');
+		      event.preventDefault()
+		    	}
+		  
+		  	}
+	    
+	// })
+</script>
 
 

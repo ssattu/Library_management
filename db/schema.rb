@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_04_062632) do
+ActiveRecord::Schema.define(version: 2022_02_07_065333) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,7 +29,6 @@ ActiveRecord::Schema.define(version: 2022_02_04_062632) do
     t.bigint "book_id", null: false
     t.bigint "user_id", null: false
     t.string "period_of_days"
-    t.datetime "issue_date", precision: 6
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["book_id"], name: "index_issue_books_on_book_id"
