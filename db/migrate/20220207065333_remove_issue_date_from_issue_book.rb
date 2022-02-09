@@ -1,5 +1,5 @@
 class RemoveIssueDateFromIssueBook < ActiveRecord::Migration[7.0]
   def change
-    remove_column :issue_books, :issue_date
+    remove_column :issue_books, :issue_date, default:false
   end
 end
