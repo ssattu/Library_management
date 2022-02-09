@@ -6,19 +6,18 @@
 						<% if !book.deleted %>
 			    	<div class="col">
 							<div class="card ", style="width: 16rem;">
+   								<div class="hovereffect"> 
 								 <% if user_signed_in? %>
-							  
-								 <!-- <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12"> -->
-   								<div class="hovereffect"> <% end %>
-     							   <p class="d-flex justify-content-center mt-2"><%= image_tag book.image.url, style: 'height:314px; width: 15rem' if book.image_url.present? %></p>
+     							   <p class="d-flex justify-content-center mt-2"><% end %>
+     							   	<%= image_tag book.image.url, style: 'height:314px; width: 15rem' if book.image_url.present? %></p>
      					       	<div class="overlay">
    		            		<p>
-                  		  <a class="info" href='/issue_books/new/<%= "#{book.id}"%>'>Issue Book</a>
+								 <% if user_signed_in? %>
+                  		  <a class="info" href='/issue_books/new/<%= "#{book.id}"%>'>Issue Book</a><% end %>
                 			</p>
             					</div>
     							</div>
-								<!-- </div>							   -->
-							  	<div class="card-body">
+								 	<div class="card-body">
 							    <h5 class="card-title"><b>Name: </b><%= book.name %></h5>
 							    <p class="card-text"><b>Book Id: </b><%= book.id %></p>
 							    <p class="card-text"><b>Genre: </b><%= book.genre %></p>
