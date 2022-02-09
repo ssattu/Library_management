@@ -13,40 +13,46 @@
         <% end %>
         </li>
 
-        <% if user_signed_in? %>
+        <% if user_signed_in? && current_user.is_admin == false %>
           <li>
           <%= link_to 'Issue New Book', new_issue_book_path, class:"nav-link"%>
           </li>
           <li>
-          
+          <%= link_to 'View Issue Book',  issue_books_index_path, class:"nav-link"%>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Return Issue Book',  issue_books_index_path, class:"nav-link"%>
           </li>
         <% end %>
       
       </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
-
+      <%= form_with url: books_path,  method: :get, class:"d-flex" do |f| %>
+        <%= f.text_field :name, class:"form-control me-2" %>
+        <%= f.submit :Search,   class:"btn btn-outline-success m-1" %>
+      <% end %>
+    
       <ul class="navbar-nav mb-2 mb-lg-0">
           <% if user_signed_in? %>
               <% if user_signed_in? && current_user.is_admin %>
                 <li class="nav-item">
                   <%= link_to 'Add Book', new_book_path, class:"nav-link"%>
                 </li>
+                <li class="nav-item">
+                  <%= link_to 'View Issue Book',  issue_books_index_path, class:"nav-link"%>
+                </li>
               <% end %>
 
             <li class="nav-item">
-              <%= link_to 'Sign Out', destroy_user_session_path, class:"nav-link"%>
+              <%= link_to 'Sign Out', destroy_user_session_path, class:" btn-outline-danger rounded-3 nav-link"%>
             </li>
           <% else %>
-          <li class="nav-item d-block">
-            <%= link_to new_user_session_path, class:"nav-link d-flex align-items-center btn"  do %>
-            <i class="fas fa-user-check"></i> Sign_In 
+          <li class="nav-item d-block m-1">
+            <%= link_to new_user_session_path, class:"nav-link d-flex align-items-center btn btn-outline-dark rounded-3"  do %>
+            <i class="fas fa-user-check"> </i> Sign_In 
             <% end %>
           </li>
-          <li class="nav-item d-block">
-            <%= link_to new_user_registration_path, class:"nav-link d-flex align-items-center btn" do %>
+          <li class="nav-item d-block m-1">
+            <%= link_to new_user_registration_path, class:"nav-link d-flex align-items-center btn btn-outline-dark rounded-3" do %>
               <i class="fas fa-user"></i> Sign_up 
             <% end %>
           </li>
@@ -55,3 +61,6 @@
     </div>
   </div>
 </nav>
+<div  class="position-absolute top-3">
+    <%= link_to "Back", :back, class:"btn btn-secondary m-5" %>
+  </div>
