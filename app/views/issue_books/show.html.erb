@@ -1,29 +1,21 @@
 
-<h1 class="d-flex justify-content-center align-content-center">Issue Book</h1><br>
-<table class="d-flex justify-content-around border-1 m-5 relative">
-		
-		<tr class="border-dark">
-				<th class="border-2 p-2 text-center"><b>User Id</th>
-				<th class="border-2 p-2 text-center"><b> Book Name</th>
-				<th class="border-2 p-2 text-center"><b>Days</th>
-				<th class="border-2 p-2 text-center"><b>Date of Issue</th>
-				<th class="border-2 p-2 text-center"><b>Date of Return</th>
-				<th class="border-2 p-2 text-center"><b>Action</th>
-		</tr>		
-			<% @issue_books.each do |issue_book|%>
-			<% if (current_user.is_admin) || (current_user.id == issue_book.user.id)  %>
-					<tr>
-						<td class="border-1 p-2"><%= issue_book.user_id %></td>
-						<td class="border-1 p-2"><%= issue_book.book.name %></td>
-						<td class="border-1 p-2"><%= issue_book.period_of_days %></td>
-						<td class="border-1 p-2"><%= issue_book.created_at.strftime('%B %d, %Y') %></td>
-						<td class="border-1 p-2"><%= issue_book.updated_at.strftime('%B %d, %Y') %></td>
-						<td>
-							<%= button_to 'return',  return_path(issue_book), method: :delete, class:'delete-btn btn-outline-dark rounded' %>	
-						</td>
-					</tr>							
+			<% if (current_user.is_admin) || (current_user.id == @issue_book.user.id)  %>
+							<h1 class="d-block m-auto d-flex justify-content-center"><u>
+								<%= @issue_book.book.name %></u>		
+								</h1>
+								<h4 class="d-block m-auto d-flex justify-content-center">By: <%= @issue_book.book.author %></h4>
+							<br>
+							<div class="d-block m-auto d-flex justify-content-center">
+								<h3>
+									Content
+								</h3>
+							</div>
+							<div class="d-block m-5 d-flex justify-content-center">
+							 <%= @issue_book.book.content %><br><br>
+							</div>
 			<% end %>
-			<%end%>
+			
 	
 
-</table>
+
+

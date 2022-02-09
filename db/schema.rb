@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_08_114606) do
+ActiveRecord::Schema.define(version: 2022_02_09_062605) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2022_02_08_114606) do
     t.string "image"
     t.boolean "deleted", default: false
     t.string "author"
+    t.string "content"
   end
 
   create_table "issue_books", force: :cascade do |t|

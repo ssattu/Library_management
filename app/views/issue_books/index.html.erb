@@ -9,6 +9,7 @@
 					<th class="border-2 p-2 text-center"><b> Book Name</th>
 					<th class="border-2 p-2 text-center"><b> Book Id</th>
 					<th class="border-2 p-2 text-center"><b>Date of Issue</th>
+					<th class="border-2 p-2 text-center"><b>Read</th>
 					<th class="border-2 p-2 text-center"><b>Return Book</th>
 		</tr>		
 			<% @issue_books.each do |issue_book|%>
@@ -22,6 +23,7 @@
 						<td class="border-1 p-2"><%= issue_book.book.name %></td>
 						<td class="border-1 p-2"><%= issue_book.book.id %></td>
 						<td class="border-1 p-2"><%= issue_book.created_at.strftime('%B %d, %Y') %></td>
+						<td class="border-1 p-2"><%= button_to 'Show',  issue_book_show_path(issue_book), method: :get, class:"btn-secondary rounded"%></td>
 						<td class="border-1 p-2"><%= button_to 'Return Book',  issue_book_return_path(issue_book), method: :delete, class:'delete-btn btn-outline-dark rounded' %></td>
 					</tr>							
 			<% end %>

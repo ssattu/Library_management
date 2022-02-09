@@ -46,8 +46,8 @@ class	UsersController <ApplicationController
  #  	@cities = CS.get(@country_key, @state_key)
   	
   # end
-	private 
-		def params
-			params.require(:post).permit(:title, :description, :post)
-		end
+	# private 
+	# 	def params
+	# 		params.require(:post).permit(:title, :description, :post)
+	# 	end
 end

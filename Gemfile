@@ -75,3 +75,4 @@ end
 gem 'devise'
 gem 'awesome_print'
 gem 'carrierwave', '~> 2.0'
+
