@@ -14,14 +14,14 @@
         </li>
 
         <% if user_signed_in? && current_user.is_admin == false %>
-          <li>
+         <!--  <li>
           <%= link_to 'Issue New Book', new_issue_book_path, class:"nav-link"%>
-          </li>
+          </li> -->
           <li>
-          <%= link_to 'View Issue Book',  issue_books_index_path, class:"nav-link"%>
+          <%= link_to 'View Issue Book',  issue_books_path, class:"nav-link"%>
           </li>
           <li class="nav-item">
-            <%= link_to 'Return Issue Book',  issue_books_index_path, class:"nav-link"%>
+            <%= link_to 'Return Issue Book',  issue_books_path, class:"nav-link"%>
           </li>
         <% end %>
       
@@ -38,7 +38,7 @@
                   <%= link_to 'Add Book', new_book_path, class:"nav-link"%>
                 </li>
                 <li class="nav-item">
-                  <%= link_to 'View Issue Book',  issue_books_index_path, class:"nav-link"%>
+                  <%= link_to 'View Issue Book',  issue_books_path, class:"nav-link"%>
                 </li>
               <% end %>
 
@@ -47,12 +47,12 @@
             </li>
           <% else %>
           <li class="nav-item d-block m-1">
-            <%= link_to new_user_session_path, class:"nav-link d-flex align-items-center btn btn-outline-dark rounded-3"  do %>
+            <%= link_to new_user_session_path, class:"nav-link d-flex align-items-center btn btn-outline-secondary rounded-3"  do %>
             <i class="fas fa-user-check"> </i> Sign_In 
             <% end %>
           </li>
           <li class="nav-item d-block m-1">
-            <%= link_to new_user_registration_path, class:"nav-link d-flex align-items-center btn btn-outline-dark rounded-3" do %>
+            <%= link_to new_user_registration_path, class:"nav-link d-flex align-items-center btn btn-outline-secondary rounded-3" do %>
               <i class="fas fa-user"></i> Sign_up 
             <% end %>
           </li>

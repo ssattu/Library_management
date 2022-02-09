@@ -14,9 +14,11 @@ class BooksController < ApplicationController
 
   def create 
     @book = Book.new(b_params)
-    # debugger
-    @book.save
-
+    if @book.present?
+      @book.update(deleted:false)
+    else
+      @book.save
+    end
     redirect_to root_path notice: "Books added Successfully"
   end
 
@@ -42,7 +44,8 @@ class BooksController < ApplicationController
 
   def destroy
     @book = Book.find(params[:id])
-    @book.destroy
+    
+    @book.update(deleted: true)
 
     redirect_to root_path, notice: "Book is Deleted Successfully"
   end

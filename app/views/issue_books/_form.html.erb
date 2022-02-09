@@ -1,17 +1,32 @@
 <section class="d-block m-auto d-flex justify-content-center">
 <%= form_with model: @issue_book, url: issue_books_path, method: :post , id:'form'  do |form| %>
     <div class="m-4">
+        <div class="col">
+                        <div class="card ", style="width: 16rem;">
+                          
+                            
+
+
+
+                          <p class="d-flex justify-content-center mt-2"> <%= image_tag @book.image.url, style: 'height: auto; width: 15rem' if @book.image_url.present? %></p>
+                          
+
+
+
+
+                            <div class="card-body">
+                            <h5 class="card-title"><b>Name: </b><%= @book.name %></h5>
+                            <p class="card-text"><b>Book Id: </b><%= @book.id %></p>
+                            <p class="card-text"><b>Genre: </b><%= @book.genre %></p>
+                            <p class="card-text"><b>Price: </b><%= price(@book) %></p>
+                            <p class="card-text"><%= @book.description %></p>
         
 
-        <%= form.label :book_id, "Book_id :"%><br>
-        <%= form.text_field :book_id , class:'input form-control', id: "issue_book_title"%><br>
+        <%= form.text_field :book_id ,value:"#{@book.id}", class:'input form-control', id: "issue_book_title"%><br>
         
-        <%= form.label :period_of_days , "Period of Days :"%><br>
-        <%= form.text_field :period_of_days , class:'input form-control' %><br>
-
         <div class="d-flex justify-content-center m-3">
             <%= link_to "Back", :back, class:"btn btn-secondary m-3" %>
-            <input type="submit" class="btn-secondary btn submit m-3" value="Upload" id="btn"></input><br>
+            <input type="submit" class="btn-secondary btn submit m-3" value="Issue Book" id="btn"></input><br>
         </div>
     </div>
 </section>
