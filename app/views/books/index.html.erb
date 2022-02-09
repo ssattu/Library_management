@@ -1,4 +1,4 @@
-<div class="container responsive">
+<div class="container responsive position-relative">
 		<h1 class="d-flex justify-content-center align-content-center ">Books</h1><br>
 		
 		  <div class="row row-cols-5">
@@ -42,6 +42,14 @@
 					<% end %>
 	 		 </div>
 </div>
+<div  class="d-flex justify-content-center m-2">
+    <%= link_to 'Newest', root_path, class:"btn btn-secondary m-2" %>
+    <%= link_to 'Previous', root_path(page: (@page -1)>= 0), class:"btn btn-secondary m-2" %>
+    <%= link_to "Next", root_path(page: @page +1), class:"btn btn-secondary m-2" %>
+</div>
+ 
+
+
 <style type="text/css">
 	.hovereffect {
   width: 100%;

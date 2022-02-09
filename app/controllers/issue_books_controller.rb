@@ -3,6 +3,10 @@ class IssueBooksController < ApplicationController
     @issue_books = IssueBook.all
   end
 
+  def return_book
+    @issue_books = IssueBook.all
+  end
+
   def new
     # @action ='new'
     # debugger

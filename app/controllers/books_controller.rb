@@ -1,9 +1,10 @@
 class BooksController < ApplicationController
+  before_action :set_page, only: [:index]
   def index
     if params[:name]
     @books = Book.where("name ilike ?", "%#{params[:name]}%")
     else
-    @books = Book.all.order(:name)
+    @books = Book.all.order(created_at: :desc).limit(5).offset(@page * 5)
     end
   end
 
@@ -54,5 +55,8 @@ class BooksController < ApplicationController
   def b_params
     params.require(:book).permit(:id, :name, :price, :content, :author, :genre, :description, :image)
   end
-
+  private
+  def set_page
+    @page = params[:page].to_i || 0
+  end
 end
